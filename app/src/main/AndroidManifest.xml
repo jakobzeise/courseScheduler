@@ -10,19 +10,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
         <activity
-            android:name=".view.AddTerm"
+            android:name=".view.TermActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".MentorActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MentorActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.AssessmentActivity"
+            android:name=".AssessmentActivity"
             android:exported="false" />
         <activity
             android:name=".view.CourseActivity"
             android:exported="false" />
         <activity
-            android:name=".view.TermActivity"
+            android:name=".view.AddMentorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AddTermActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.MentorListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AssessmentListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.CourseListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.TermListActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

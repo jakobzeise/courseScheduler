@@ -10,10 +10,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.view.AssessmentActivity;
-import com.jakobzeise.coursescheduler.view.CourseActivity;
-import com.jakobzeise.coursescheduler.view.MentorActivity;
-import com.jakobzeise.coursescheduler.view.TermActivity;
+import com.jakobzeise.coursescheduler.view.AssessmentListActivity;
+import com.jakobzeise.coursescheduler.view.CourseListActivity;
+import com.jakobzeise.coursescheduler.view.MentorListActivity;
+import com.jakobzeise.coursescheduler.view.TermListActivity;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
@@ -32,7 +32,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             // Define click listener for the ViewHolder's View
 
             textViewNumber = (TextView) view.findViewById(R.id.textViewNumber);
-            textViewHeading= (TextView) view.findViewById(R.id.textViewHeading);
+            textViewHeading = (TextView) view.findViewById(R.id.textViewHeading);
             imageViewIcon = (ImageView) view.findViewById(R.id.imageViewIcon);
         }
 
@@ -53,7 +53,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
      * Initialize the dataset of the Adapter.
      *
      * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
+     *                by RecyclerView.
      */
     public MainAdapter(Type[] dataSet) {
         localDataSet = dataSet;
@@ -78,18 +78,21 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         viewHolder.getTextViewHeading().setText(localDataSet[position].name);
         viewHolder.getTextViewNumber().setText(String.valueOf(localDataSet[position].numberOfItems));
         viewHolder.getImageViewIcon().setBackgroundResource(localDataSet[position].icon);
-        switch (localDataSet[position].name){
+        switch (localDataSet[position].name) {
             case "Terms": {
-                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), TermActivity.class)));
-            }break;
+                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), TermListActivity.class)));
+            }
+            break;
             case "Course": {
-                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), CourseActivity.class)));
-            }break;
+                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), CourseListActivity.class)));
+            }
+            break;
             case "Assessment": {
-                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), AssessmentActivity.class)));
-            }break;
+                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), AssessmentListActivity.class)));
+            }
+            break;
             case "Mentor": {
-                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), MentorActivity.class)));
+                viewHolder.imageViewIcon.setOnClickListener(v -> viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), MentorListActivity.class)));
             }
             break;
             default:

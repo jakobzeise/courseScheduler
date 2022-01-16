@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:background="@layout/border"
+    android:background="@drawable/border"
     android:padding="10dp">
 
     <ImageButton
-        android:id="@+id/imageButtonedit"
+        android:id="@+id/editCourseItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FF03DAC5"
@@ -18,24 +18,24 @@
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <TextView
-        android:id="@+id/textViewMentorName"
+        android:id="@+id/textViewCourseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="Sample Term"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonedit"
+        app:layout_constraintStart_toEndOf="@+id/editCourseItem"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/textViewCourseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jan 11 to Jan 12 2022"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonedit"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMentorName" />
+        app:layout_constraintStart_toEndOf="@+id/editCourseItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCourseName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

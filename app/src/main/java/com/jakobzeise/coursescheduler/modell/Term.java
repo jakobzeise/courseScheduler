@@ -1,17 +1,21 @@
 package com.jakobzeise.coursescheduler.modell;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 public class Term {
 
+    String name;
     Date startDate;
     Date endDate;
-    String name;
+
 
     public Term(String name, Date startDate, Date endDate) {
+        this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.name = name;
+
     }
 
     public Date getStartDate() {
@@ -36,5 +40,14 @@ public class Term {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return
+                name + ";" +
+                startDate + ";" +
+                endDate + ";" ;
     }
 }

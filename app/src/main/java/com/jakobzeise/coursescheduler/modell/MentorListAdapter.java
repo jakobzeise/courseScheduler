@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakobzeise.coursescheduler.R;
 
-public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.ViewHolder> {
+public class MentorListAdapter extends RecyclerView.Adapter<MentorListAdapter.ViewHolder> {
 
     private Mentor[] localDataSet;
 
@@ -25,8 +25,8 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.ViewHolder
             super(view);
             // Define click listener for the ViewHolder's View
 
-            textViewEmail = (TextView) view.findViewById(R.id.textViewEmail);
-            textViewMentorName = (TextView) view.findViewById(R.id.textViewMentorName);
+            textViewEmail = (TextView) view.findViewById(R.id.textViewCourseDate);
+            textViewMentorName = (TextView) view.findViewById(R.id.textViewCourseName);
         }
 
         public TextView getTextViewEmail() {
@@ -42,9 +42,9 @@ public class MentorAdapter extends RecyclerView.Adapter<MentorAdapter.ViewHolder
      * Initialize the dataset of the Adapter.
      *
      * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
+     *                by RecyclerView.
      */
-    public MentorAdapter(Mentor[] dataSet) {
+    public MentorListAdapter(Mentor[] dataSet) {
         localDataSet = dataSet;
     }
 

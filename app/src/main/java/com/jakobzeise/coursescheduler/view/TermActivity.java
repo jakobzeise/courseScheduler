@@ -1,44 +1,52 @@
 package com.jakobzeise.coursescheduler.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.modell.Term;
-import com.jakobzeise.coursescheduler.modell.TermAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TermActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms);
+        setContentView(R.layout.activity_term);
 
-        Button addTermButton = findViewById(R.id.buttonAddTerm);
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewTerms);
-        Term[] terms = new Term[]{
-                new Term("Sample Term 1", new Date(2022-1900, 1, 1), new Date(2022-1900, 1, 10)),
-                new Term("Sample Term 2", new Date(2022-1900, 1, 20), new Date(2022-1900, 1, 30)),
-                new Term("Sample Term 3", new Date(2022-1900, 2, 1), new Date(2022-1900, 1, 30)),
+        TextView textViewTermName = (TextView) findViewById(R.id.textViewCourseName);
+        TextView textViewStartDateTerm = (TextView) findViewById(R.id.textViewStartDateTerm);
+        TextView textViewEndDateTerm = (TextView) findViewById(R.id.textViewEndDateTerm);
+        Button buttonDeleteTerm = (Button) findViewById(R.id.buttonDeleteTerm);
+        Button buttonGoHomeTerm = (Button) findViewById(R.id.buttonGoHomeTerm);
 
-        };
+        String termName = getIntent().getStringExtra("termName");
+        Date startDate = new Date(getIntent().getLongExtra("startDate", 0));
+        Date endDate = new Date(getIntent().getLongExtra("endDate", 0));
 
-        TermAdapter termAdapter = new TermAdapter(terms);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(termAdapter);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM-dd-yyyy");
 
-        addTermButton.setOnClickListener(v ->{
-            startActivity(new Intent(this, AddTerm.class));
-        });
+        textViewTermName.setText(termName);
+        textViewStartDateTerm.setText("StartDate: \n" + simpleDateFormat.format(startDate));
+        textViewEndDateTerm.setText("EndDate: \n" + simpleDateFormat.format(endDate));
+        buttonDeleteTerm.setOnClickListener(v ->
+                // TODO: 16.01.22 Implement Database
+                deleteTermFromDataBase()
+        );
+
+        buttonGoHomeTerm.setOnClickListener(v ->
+                startActivity(new Intent(this, MainActivity.class))
+        );
+    }
+
+    public void deleteTermFromDataBase() {
+
     }
 }

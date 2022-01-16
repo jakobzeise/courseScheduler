@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.TermActivity">
+
+    <TextView
+        android:id="@+id/textViewCourseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TermName"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGoHomeTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonDeleteTerm"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEndDateTerm" />
+
+    <Button
+        android:id="@+id/buttonDeleteTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#FF0000"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonGoHomeTerm"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCourseName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonGoHomeTerm" />
+
+    <TextView
+        android:id="@+id/textViewStartDateTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="StartDate"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewCourseName"
+        app:layout_constraintStart_toStartOf="@+id/textViewCourseName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCourseName" />
+
+    <TextView
+        android:id="@+id/textViewEndDateTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewStartDateTerm"
+        app:layout_constraintStart_toStartOf="@+id/textViewStartDateTerm"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStartDateTerm" />
+</androidx.constraintlayout.widget.ConstraintLayout>

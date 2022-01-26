@@ -1,6 +1,7 @@
 package com.jakobzeise.coursescheduler.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.jakobzeise.coursescheduler.R;
+import com.jakobzeise.coursescheduler.modell.AppDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class TermActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_term);
+
 
         TextView textViewTermName = (TextView) findViewById(R.id.textViewCourseName);
         TextView textViewStartDateTerm = (TextView) findViewById(R.id.textViewStartDateTerm);

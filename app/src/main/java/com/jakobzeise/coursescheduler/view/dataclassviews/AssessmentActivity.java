@@ -1,8 +1,10 @@
-package com.jakobzeise.coursescheduler;
+package com.jakobzeise.coursescheduler.view.dataclassviews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.jakobzeise.coursescheduler.R;
 
 public class AssessmentActivity extends AppCompatActivity {
 

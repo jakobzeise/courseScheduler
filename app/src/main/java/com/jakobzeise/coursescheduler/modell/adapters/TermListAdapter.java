@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.modell;
+package com.jakobzeise.coursescheduler.modell.adapters;
 
 
 import android.annotation.SuppressLint;
@@ -13,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.view.TermActivity;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Term;
+import com.jakobzeise.coursescheduler.view.dataclassviews.TermActivity;
 
 import java.text.SimpleDateFormat;
 
@@ -82,15 +83,15 @@ public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHo
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM-dd-yyyy");
-        String termDate = simpleDateFormat.format(localDataSet[position].startDate)
-                + " to " + simpleDateFormat.format(localDataSet[position].endDate);
+        String termDate = simpleDateFormat.format(localDataSet[position].getStartDate())
+                + " to " + simpleDateFormat.format(localDataSet[position].getEndDate());
         viewHolder.getTextViewTermDate().setText(termDate);
-        viewHolder.getTextViewTermName().setText(localDataSet[position].name);
+        viewHolder.getTextViewTermName().setText(localDataSet[position].getName());
         viewHolder.getImageButtonEdit().setOnClickListener(v -> {
             Intent intent = new Intent(viewHolder.getImageButtonEdit().getContext(), TermActivity.class)
-                    .putExtra("termName", localDataSet[position].name)
-                    .putExtra("startDate", localDataSet[position].startDate)
-                    .putExtra("endDate", localDataSet[position].endDate);
+                    .putExtra("termName", localDataSet[position].getName())
+                    .putExtra("startDate", localDataSet[position].getStartDate())
+                    .putExtra("endDate", localDataSet[position].getEndDate());
             viewHolder.getImageButtonEdit().getContext().startActivity(intent);
 
         });

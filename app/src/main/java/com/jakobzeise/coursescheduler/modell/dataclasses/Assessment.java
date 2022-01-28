@@ -1,14 +1,21 @@
-package com.jakobzeise.coursescheduler.modell;
+package com.jakobzeise.coursescheduler.modell.dataclasses;
 
-import java.util.Date;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+
+@Entity
 public class Assessment {
+
+    @PrimaryKey(autoGenerate = true)
+    long id;
 
     String assessmentGrade;
     String performanceAssessment;
     String objectiveAssessment;
     String assessmentTitle;
-    Date assessmentEndDate;
+    long assessmentEndDate;
+
 
     public String getAssessmentGrade() {
         return assessmentGrade;
@@ -42,12 +49,20 @@ public class Assessment {
         this.assessmentTitle = assessmentTitle;
     }
 
-    public Date getAssessmentEndDate() {
+    public long getAssessmentEndDate() {
         return assessmentEndDate;
     }
 
-    public void setAssessmentEndDate(Date assessmentEndDate) {
+    public void setAssessmentEndDate(long assessmentEndDate) {
         this.assessmentEndDate = assessmentEndDate;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Assessment(
@@ -55,7 +70,7 @@ public class Assessment {
             String performanceAssessment,
             String objectiveAssessment,
             String assessmentTitle,
-            Date assessmentEndDate
+            long assessmentEndDate
     ) {
         this.assessmentGrade = assessmentGrade;
         this.performanceAssessment = performanceAssessment;

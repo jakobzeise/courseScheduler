@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.view;
+package com.jakobzeise.coursescheduler.view.lists;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -10,12 +10,15 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.modell.Assessment;
-import com.jakobzeise.coursescheduler.modell.Course;
-import com.jakobzeise.coursescheduler.modell.CourseListAdapter;
-import com.jakobzeise.coursescheduler.modell.Mentor;
-import com.jakobzeise.coursescheduler.modell.MentorListAdapter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Assessment;
+import com.jakobzeise.coursescheduler.modell.converters.AssessmentConverter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Course;
+import com.jakobzeise.coursescheduler.modell.adapters.CourseListAdapter;
+import com.jakobzeise.coursescheduler.modell.converters.DateConverter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Mentor;
+import com.jakobzeise.coursescheduler.view.adds.AddMentorActivity;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class CourseListActivity extends AppCompatActivity {
@@ -51,31 +54,32 @@ public class CourseListActivity extends AppCompatActivity {
                         "Very Good",
                         "Not so Good",
                         "Sample Assessment 1",
-                        new Date(2022 - 1900, 1, 10)
+                        DateConverter.fromDate(new Date(2022 - 1900, 1, 10))
                 ),
                 new Assessment(
                         "A",
                         "Very Good",
                         "Not so Good",
                         "Sample Assessment 2",
-                        new Date(2022 - 1900, 1, 10)
+                        DateConverter.fromDate(new Date(2022 - 1900, 1, 10))
                 ),
                 new Assessment(
                         "A",
                         "Very Good",
                         "Not so Good",
                         "Sample Assessment 3",
-                        new Date(2022 - 1900, 1, 10)
+                        DateConverter.fromDate(new Date(2022 - 1900, 1, 10))
                 ),
                 new Assessment(
                         "A",
                         "Very Good",
                         "Not so Good",
                         "Sample Assessment 4",
-                        new Date(2022 - 1900, 1, 10)
+                        DateConverter.fromDate(new Date(2022 - 1900, 1, 10))
                 )
 
         };
+
 
 
         // TODO: 16.01.22 Implement Database
@@ -83,40 +87,14 @@ public class CourseListActivity extends AppCompatActivity {
         courses = new Course[]{
                 new Course(
                         "Sample Course 1",
-                        new Date(2022 - 1900, 1, 15),
-                        new Date(2022 - 1900, 5, 15),
+                        DateConverter.fromDate(new Date(2022 - 1900, 1, 15)),
+                        DateConverter.fromDate(new Date(2022 - 1900, 1, 15)),
                         "in Progress",
-                        mentors[3],
-                        assessments,
-                        new String[]{"I hate this course lol"}
-                ),
-                new Course(
-                        "Sample Course 2",
-                        new Date(2022 - 1900, 1, 15),
-                        new Date(2022 - 1900, 5, 15),
-                        "in Progress",
-                        mentors[3],
-                        assessments,
-                        new String[]{"I hate this course lol"}
-                ),
-                new Course(
-                        "Sample Course 3",
-                        new Date(2022 - 1900, 1, 15),
-                        new Date(2022 - 1900, 5, 15),
-                        "in Progress",
-                        mentors[3],
-                        assessments,
-                        new String[]{"I hate this course lol"}
-                ),
-                new Course(
-                        "Sample Course 4",
-                        new Date(2022 - 1900, 1, 15),
-                        new Date(2022 - 1900, 5, 15),
-                        "in Progress",
-                        mentors[3],
-                        assessments,
-                        new String[]{"I hate this course lol"}
-                ),
+                        mentors[3].getId(),
+                        AssessmentConverter.stringFromObject(Arrays.asList(assessments)),
+                        "note1"
+                )
+
         };
 
         CourseListAdapter courseListAdapter = new CourseListAdapter(courses);

@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.modell;
+package com.jakobzeise.coursescheduler.modell.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,12 +6,14 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.jakobzeise.coursescheduler.modell.dataclasses.Term;
+
 import java.util.List;
 
 @Dao
 public interface TermDao {
 
-    @Query("SELECT * FROM term_table")
+    @Query("SELECT * FROM term")
     List<Term> getAll();
 
     @Insert

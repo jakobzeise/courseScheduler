@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.modell;
+package com.jakobzeise.coursescheduler.modell.adapters;
 
 
 import android.annotation.SuppressLint;
@@ -13,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.view.TermActivity;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Course;
+import com.jakobzeise.coursescheduler.view.dataclassviews.TermActivity;
 
 import java.text.SimpleDateFormat;
 
@@ -22,17 +23,12 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
     private final Course[] localDataSet;
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewCourseName, textViewCourseDate;
         private final ImageButton imageButtonEditCourse;
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
 
             imageButtonEditCourse = (ImageButton) view.findViewById(R.id.editCourseItem);
             textViewCourseDate = (TextView) view.findViewById(R.id.textViewCourseDate);
@@ -54,50 +50,41 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
     }
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     *                by RecyclerView.
-     */
     public CourseListAdapter(Course[] dataSet) {
         localDataSet = dataSet;
     }
 
-    // Create new views (invoked by the layout manager)
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.term_item_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM-dd-yyyy");
-        String termDate = simpleDateFormat.format(localDataSet[position].startDate)
-                + " to " + simpleDateFormat.format(localDataSet[position].endDate);
+
+        String termDate = simpleDateFormat.format(localDataSet[position].getStartDate())
+                + " to " + simpleDateFormat.format(localDataSet[position].getEndDate());
+
         viewHolder.getTextViewCourseDate().setText(termDate);
-        viewHolder.getTextViewCourseName().setText(localDataSet[position].title);
+        viewHolder.getTextViewCourseName().setText(localDataSet[position].getTitle());
+
         viewHolder.getImageButtonEditCourse().setOnClickListener(v -> {
             Intent intent = new Intent(viewHolder.getImageButtonEditCourse().getContext(), TermActivity.class)
-                    .putExtra("termName", localDataSet[position].title)
-                    .putExtra("startDate", localDataSet[position].startDate)
-                    .putExtra("endDate", localDataSet[position].endDate);
+                    .putExtra("termName", localDataSet[position].getTitle())
+                    .putExtra("startDate", localDataSet[position].getStartDate())
+                    .putExtra("endDate", localDataSet[position].getEndDate());
             viewHolder.getImageButtonEditCourse().getContext().startActivity(intent);
-
         });
 
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+
     @Override
     public int getItemCount() {
         return localDataSet.length;

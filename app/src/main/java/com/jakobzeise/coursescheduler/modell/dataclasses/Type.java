@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.modell;
+package com.jakobzeise.coursescheduler.modell.dataclasses;
 
 import androidx.annotation.NonNull;
 

@@ -1,12 +1,14 @@
-package com.jakobzeise.coursescheduler.modell;
+package com.jakobzeise.coursescheduler.modell.dataclasses;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.jakobzeise.coursescheduler.modell.converters.DateConverter;
+
 import java.util.Date;
 
-@Entity(tableName = "term_table")
+@Entity
 public class Term {
 
     @PrimaryKey(autoGenerate = true)
@@ -47,6 +49,14 @@ public class Term {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @NonNull

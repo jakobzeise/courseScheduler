@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.view;
+package com.jakobzeise.coursescheduler.view.dataclassviews;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.modell.MainAdapter;
-import com.jakobzeise.coursescheduler.modell.Type;
+import com.jakobzeise.coursescheduler.modell.adapters.MainAdapter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Type;
 
 public class MainActivity extends AppCompatActivity {
 

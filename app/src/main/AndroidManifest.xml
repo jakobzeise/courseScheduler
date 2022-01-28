@@ -10,37 +10,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
         <activity
-            android:name=".view.TermActivity"
+            android:name=".view.dataclassviews.TermActivity"
             android:exported="false"/>
         <activity
-            android:name=".MentorActivity"
+            android:name=".view.dataclassviews.MentorActivity"
             android:exported="false" />
         <activity
-            android:name=".AssessmentActivity"
+            android:name=".view.dataclassviews.AssessmentActivity"
             android:exported="false" />
         <activity
-            android:name=".view.CourseActivity"
+            android:name=".view.dataclassviews.CourseActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AddMentorActivity"
+            android:name=".view.adds.AddMentorActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AddTermActivity"
+            android:name=".view.adds.AddTermActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MentorListActivity"
+            android:name=".view.lists.MentorListActivity"
             android:exported="false" />
         <activity
-            android:name=".view.AssessmentListActivity"
+            android:name=".view.lists.AssessmentListActivity"
             android:exported="false" />
         <activity
-            android:name=".view.CourseListActivity"
+            android:name=".view.lists.CourseListActivity"
             android:exported="false" />
         <activity
-            android:name=".view.TermListActivity"
+            android:name=".view.lists.TermListActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.dataclassviews.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

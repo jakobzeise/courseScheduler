@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.view;
+package com.jakobzeise.coursescheduler.view.adds;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.jakobzeise.coursescheduler.R;
+import com.jakobzeise.coursescheduler.view.dataclassviews.MainActivity;
 
 public class AddMentorActivity extends AppCompatActivity {
 

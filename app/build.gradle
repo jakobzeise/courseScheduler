@@ -43,6 +43,8 @@ dependencies {
 
     def lifecycle_version = "2.4.0"
 
+    implementation 'com.google.code.gson:gson:2.8.9'
+
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // ViewModel utilities for Compose

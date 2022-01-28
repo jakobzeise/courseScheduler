@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.view;
+package com.jakobzeise.coursescheduler.view.lists;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.jakobzeise.coursescheduler.R;
 
-public class CourseActivity extends AppCompatActivity {
+public class AssessmentListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course);
+        setContentView(R.layout.activity_assessment_list);
     }
 }

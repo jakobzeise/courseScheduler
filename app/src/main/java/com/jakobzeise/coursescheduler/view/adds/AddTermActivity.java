@@ -1,6 +1,7 @@
-package com.jakobzeise.coursescheduler.view;
+package com.jakobzeise.coursescheduler.view.adds;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jakobzeise.coursescheduler.R;
+import com.jakobzeise.coursescheduler.modell.database.AppDatabase;
+import com.jakobzeise.coursescheduler.modell.converters.DateConverter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Term;
+import com.jakobzeise.coursescheduler.view.dataclassviews.MainActivity;
 
 import java.util.Date;
 
@@ -22,8 +27,9 @@ public class AddTermActivity extends AppCompatActivity {
     CalendarView calendarViewTerm;
     Button buttonNext;
 
-    Date startDate, endDate;
+    long startDate, endDate;
     String termName;
+    long curDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +41,17 @@ public class AddTermActivity extends AppCompatActivity {
         calendarViewTerm = (CalendarView) findViewById(R.id.calendarViewTerm);
         buttonNext = (Button) findViewById(R.id.buttonNextAddTerm);
 
+        calendarViewTerm.setOnDateChangeListener((view, year, month, dayOfMonth)
+                -> curDate = DateConverter.fromDate(new Date(year - 1900, month, dayOfMonth)));
+
         buttonNext.setOnClickListener(v -> {
             switch (counter) {
                 case 0:
-                    startDate = new Date(calendarViewTerm.getDate());
+                    startDate = curDate;
                     textViewInstruction.setText("Select End Date of the Term");
                     break;
                 case 1:
-                    endDate = new Date(calendarViewTerm.getDate());
+                    endDate = curDate;
                     editTextTermName.setVisibility(View.VISIBLE);
                     calendarViewTerm.setVisibility(View.INVISIBLE);
                     textViewInstruction.setText("Insert the Name of the Term");
@@ -59,6 +68,9 @@ public class AddTermActivity extends AppCompatActivity {
     }
 
     public void addTermToDatabase() {
-        // TODO: 15.01.22 Implement Database
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "app_database").allowMainThreadQueries().build();
+
+        db.termDao().insertAll(new Term(termName, startDate, endDate));
     }
 }

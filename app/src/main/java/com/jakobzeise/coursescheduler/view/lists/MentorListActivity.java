@@ -1,4 +1,4 @@
-package com.jakobzeise.coursescheduler.view;
+package com.jakobzeise.coursescheduler.view.lists;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.jakobzeise.coursescheduler.R;
-import com.jakobzeise.coursescheduler.modell.Mentor;
-import com.jakobzeise.coursescheduler.modell.MentorListAdapter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Mentor;
+import com.jakobzeise.coursescheduler.modell.adapters.MentorListAdapter;
+import com.jakobzeise.coursescheduler.view.adds.AddMentorActivity;
 
 public class MentorListActivity extends AppCompatActivity {
 

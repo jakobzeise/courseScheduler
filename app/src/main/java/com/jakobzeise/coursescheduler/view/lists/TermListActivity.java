@@ -20,27 +20,25 @@ import java.util.List;
 
 public class TermListActivity extends AppCompatActivity {
 
-    public final String TAG = "databaseCheck";
+
+    TermListAdapter.OnTermItemClickListener mListener = (termId, context) -> {};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_term_list);
 
-        Button addTermButton = findViewById(R.id.buttonAddMentor);
+        Button addTermButton = findViewById(R.id.buttonAddTerm);
         RecyclerView recyclerView = findViewById(R.id.recyclerViewTerms);
+
 
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "app_database").allowMainThreadQueries().build();
 
         List<Term> terms = db.termDao().getAll();
 
-
-
-
-
-
-
-        TermListAdapter termListAdapter = new TermListAdapter(terms.toArray(new Term[0]));
+        TermListAdapter termListAdapter = new TermListAdapter(terms.toArray(new Term[0]), mListener, this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -51,7 +49,4 @@ public class TermListActivity extends AppCompatActivity {
         });
     }
 
-    public Term[] getTermsFromDatabase() {
-        return new Term[]{};
-    }
 }

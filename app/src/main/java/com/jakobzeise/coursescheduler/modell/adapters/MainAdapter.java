@@ -8,8 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.jakobzeise.coursescheduler.R;
+import com.jakobzeise.coursescheduler.modell.database.AppDatabase;
 import com.jakobzeise.coursescheduler.modell.dataclasses.Type;
 import com.jakobzeise.coursescheduler.view.lists.AssessmentListActivity;
 import com.jakobzeise.coursescheduler.view.lists.CourseListActivity;
@@ -60,26 +62,35 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
+        AppDatabase db = Room.databaseBuilder(viewHolder.itemView.getContext(),
+                AppDatabase.class, "app_database").allowMainThreadQueries().build();
+
+        db.termDao().getAll().size();
+
         viewHolder.getTextViewHeading().setText(localDataSet[position].getName());
-        viewHolder.getTextViewNumber().setText(String.valueOf(localDataSet[position].getNumberOfItems()));
+
         viewHolder.getImageViewIcon().setBackgroundResource(localDataSet[position].getIcon());
         switch (localDataSet[position].getName()) {
             case "Terms": {
+                viewHolder.getTextViewNumber().setText(String.valueOf(db.termDao().getAll().size()));
                 viewHolder.imageViewIcon.setOnClickListener(v ->
                         viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), TermListActivity.class)));
             }
             break;
             case "Course": {
+                viewHolder.getTextViewNumber().setText(String.valueOf(db.courseDao().getAll().size()));
                 viewHolder.imageViewIcon.setOnClickListener(v ->
                         viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), CourseListActivity.class)));
             }
             break;
             case "Assessment": {
+                viewHolder.getTextViewNumber().setText(String.valueOf(db.assessDao().getAll().size()));
                 viewHolder.imageViewIcon.setOnClickListener(v ->
                         viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), AssessmentListActivity.class)));
             }
             break;
             case "Mentor": {
+                viewHolder.getTextViewNumber().setText(String.valueOf(db.mentorDao().getAll().size()));
                 viewHolder.imageViewIcon.setOnClickListener(v ->
                         viewHolder.imageViewIcon.getContext().startActivity(new Intent(viewHolder.imageViewIcon.getContext(), MentorListActivity.class)));
             }

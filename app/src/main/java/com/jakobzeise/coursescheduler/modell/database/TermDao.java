@@ -25,4 +25,11 @@ public interface TermDao {
     @Update
     void update(Term term);
 
+    @Query("DELETE FROM term WHERE id = :id")
+    void deleteById(long id);
+
+    @Query("UPDATE term SET courseList = :courseListString WHERE id = :id")
+            void updateCourse(long id, String courseListString);
+
+
 }

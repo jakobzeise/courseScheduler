@@ -14,13 +14,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddMentor"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddTerm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonAddMentor"
+        android:id="@+id/buttonAddTerm"
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="60dp"
         android:layout_height="60dp"

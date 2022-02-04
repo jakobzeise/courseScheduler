@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakobzeise.coursescheduler.R;
 import com.jakobzeise.coursescheduler.modell.dataclasses.Course;
-import com.jakobzeise.coursescheduler.view.dataclassviews.TermActivity;
+import com.jakobzeise.coursescheduler.view.dataclassviews.CourseActivity;
 
 import java.text.SimpleDateFormat;
 
@@ -32,7 +32,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
             imageButtonEditCourse = (ImageButton) view.findViewById(R.id.editCourseItem);
             textViewCourseDate = (TextView) view.findViewById(R.id.textViewCourseDate);
-            textViewCourseName = (TextView) view.findViewById(R.id.textViewCourseName);
+            textViewCourseName = (TextView) view.findViewById(R.id.textViewTermName);
         }
 
         public TextView getTextViewCourseName() {
@@ -58,7 +58,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.term_item_row, viewGroup, false);
+                .inflate(R.layout.course_item_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
@@ -68,15 +68,15 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM-dd-yyyy");
 
-        String termDate = simpleDateFormat.format(localDataSet[position].getStartDate())
+        String courseDate = simpleDateFormat.format(localDataSet[position].getStartDate())
                 + " to " + simpleDateFormat.format(localDataSet[position].getEndDate());
 
-        viewHolder.getTextViewCourseDate().setText(termDate);
+        viewHolder.getTextViewCourseDate().setText(courseDate);
         viewHolder.getTextViewCourseName().setText(localDataSet[position].getTitle());
 
         viewHolder.getImageButtonEditCourse().setOnClickListener(v -> {
-            Intent intent = new Intent(viewHolder.getImageButtonEditCourse().getContext(), TermActivity.class)
-                    .putExtra("termName", localDataSet[position].getTitle())
+            Intent intent = new Intent(viewHolder.getImageButtonEditCourse().getContext(), CourseActivity.class)
+                    .putExtra("courseName", localDataSet[position].getTitle())
                     .putExtra("startDate", localDataSet[position].getStartDate())
                     .putExtra("endDate", localDataSet[position].getEndDate());
             viewHolder.getImageButtonEditCourse().getContext().startActivity(intent);

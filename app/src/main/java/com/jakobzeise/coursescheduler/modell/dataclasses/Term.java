@@ -20,6 +20,7 @@ public class Term {
 
     long endDate;
 
+    String courseList;
 
     public Term(String name, long startDate, long endDate) {
         this.name = name;
@@ -57,6 +58,14 @@ public class Term {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(String courseList) {
+        this.courseList = courseList;
     }
 
     @NonNull

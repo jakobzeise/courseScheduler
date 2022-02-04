@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
                 new Type(R.drawable.mentor, "Mentor", 0)
         };
 
+
+
         MainAdapter mainAdapter = new MainAdapter(types);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);

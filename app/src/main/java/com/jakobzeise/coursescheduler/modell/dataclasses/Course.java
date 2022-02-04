@@ -13,7 +13,7 @@ public class Course {
     long startDate;
     long endDate;
     String status;
-    long mentorId;
+    String mentorList;
     String assessmentList;
     String notesList;
 
@@ -57,14 +57,6 @@ public class Course {
         this.status = status;
     }
 
-    public long getMentorId() {
-        return mentorId;
-    }
-
-    public void setMentorId(long mentorId) {
-        this.mentorId = mentorId;
-    }
-
     public String getAssessmentList() {
         return assessmentList;
     }
@@ -81,14 +73,22 @@ public class Course {
         this.notesList = notesList;
     }
 
-    public Course(String title, long startDate, long endDate, String status, long mentorId, String assessmentList, String notesList) {
+    public String getMentorList() {
+        return mentorList;
+    }
+
+    public void setMentorList(String mentorList) {
+        this.mentorList = mentorList;
+    }
+
+    public Course(String title, long startDate, long endDate, String status, String assessmentList, String notesList, String mentorList) {
 
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.status = status;
-        this.mentorId = mentorId;
         this.assessmentList = assessmentList;
         this.notesList = notesList;
+        this.mentorList = mentorList;
     }
 }

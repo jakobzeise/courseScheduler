@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
         <activity
+            android:name=".view.adds.AddCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.dataclassviews.TermActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".view.dataclassviews.MentorActivity"
             android:exported="false" />

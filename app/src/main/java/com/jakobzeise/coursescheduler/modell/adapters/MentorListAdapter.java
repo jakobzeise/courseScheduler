@@ -22,7 +22,7 @@ public class MentorListAdapter extends RecyclerView.Adapter<MentorListAdapter.Vi
             super(view);
 
             textViewEmail = (TextView) view.findViewById(R.id.textViewCourseDate);
-            textViewMentorName = (TextView) view.findViewById(R.id.textViewCourseName);
+            textViewMentorName = (TextView) view.findViewById(R.id.textViewTermName);
         }
 
         public TextView getTextViewEmail() {

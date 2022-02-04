@@ -1,7 +1,5 @@
 package com.jakobzeise.coursescheduler.modell.dataclasses;
 
-import com.jakobzeise.coursescheduler.modell.dataclasses.Assessment;
-
 import java.util.List;
 
 public class ListAssessment {

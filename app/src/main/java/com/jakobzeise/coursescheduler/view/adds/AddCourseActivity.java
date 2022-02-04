@@ -14,12 +14,13 @@ import android.widget.TextView;
 import com.jakobzeise.coursescheduler.R;
 import com.jakobzeise.coursescheduler.modell.database.AppDatabase;
 import com.jakobzeise.coursescheduler.modell.converters.DateConverter;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Course;
 import com.jakobzeise.coursescheduler.modell.dataclasses.Term;
 import com.jakobzeise.coursescheduler.view.dataclassviews.MainActivity;
 
 import java.util.Date;
 
-public class AddTermActivity extends AppCompatActivity {
+public class AddCourseActivity extends AppCompatActivity {
 
     int counter = 0;
     TextView textViewInstruction;
@@ -28,13 +29,14 @@ public class AddTermActivity extends AppCompatActivity {
     Button buttonNext;
 
     long startDate, endDate;
-    String termName;
+    String courseName;
     long curDate;
+    String courseStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_term);
+        setContentView(R.layout.activity_add_course);
 
         textViewInstruction = findViewById(R.id.textViewAddCourseInstructions);
         editTextTermName = (EditText) findViewById(R.id.editTextCourseName);
@@ -48,16 +50,16 @@ public class AddTermActivity extends AppCompatActivity {
             switch (counter) {
                 case 0:
                     startDate = curDate;
-                    textViewInstruction.setText("Select End Date of the Term");
+                    textViewInstruction.setText("Select End Date of the Course");
                     break;
                 case 1:
                     endDate = curDate;
                     editTextTermName.setVisibility(View.VISIBLE);
                     calendarViewTerm.setVisibility(View.INVISIBLE);
-                    textViewInstruction.setText("Insert the Name of the Term");
+                    textViewInstruction.setText("Insert the Name of the Course");
                     break;
                 case 2:
-                    termName = editTextTermName.getText().toString();
+                    courseName = editTextTermName.getText().toString();
                     addTermToDatabase();
                     startActivity(new Intent(this, MainActivity.class));
             }
@@ -71,6 +73,6 @@ public class AddTermActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "app_database").allowMainThreadQueries().build();
 
-        db.termDao().insertAll(new Term(termName, startDate, endDate));
+        db.courseDao().insertAll(new Course(courseName, startDate, endDate, courseStatus, null, null, null));
     }
 }

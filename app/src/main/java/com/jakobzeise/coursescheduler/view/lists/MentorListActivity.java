@@ -21,7 +21,7 @@ public class MentorListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mentor_list);
 
-        Button buttonAddMentor = (Button) findViewById(R.id.buttonAddMentor);
+        Button buttonAddMentor = (Button) findViewById(R.id.buttonAddTerm);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewMentors);
 

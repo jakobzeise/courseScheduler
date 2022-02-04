@@ -2,6 +2,7 @@ package com.jakobzeise.coursescheduler.modell.adapters;
 
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,23 +22,22 @@ import java.text.SimpleDateFormat;
 
 public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHolder> {
 
+    public static long badIdTerm;
     private final Term[] localDataSet;
+    OnTermItemClickListener listener;
+    Context context;
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewTermName, textViewTermDate;
         private final ImageButton imageButtonEdit;
 
         public ViewHolder(View view) {
             super(view);
-            // Define click listener for the ViewHolder's View
 
             imageButtonEdit = (ImageButton) view.findViewById(R.id.editCourseItem);
             textViewTermDate = (TextView) view.findViewById(R.id.textViewCourseDate);
-            textViewTermName = (TextView) view.findViewById(R.id.textViewCourseName);
+            textViewTermName = (TextView) view.findViewById(R.id.textViewTermName);
+
         }
 
         public TextView getTextViewTermDate() {
@@ -55,53 +55,47 @@ public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHo
 
     }
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     *                by RecyclerView.
-     */
-    public TermListAdapter(Term[] dataSet) {
+    public TermListAdapter(Term[] dataSet, OnTermItemClickListener listener, Context context) {
         localDataSet = dataSet;
+        this.listener = listener;
+        this.context = context;
     }
 
-    // Create new views (invoked by the layout manager)
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.term_item_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM-dd-yyyy");
         String termDate = simpleDateFormat.format(localDataSet[position].getStartDate())
                 + " to " + simpleDateFormat.format(localDataSet[position].getEndDate());
         viewHolder.getTextViewTermDate().setText(termDate);
         viewHolder.getTextViewTermName().setText(localDataSet[position].getName());
         viewHolder.getImageButtonEdit().setOnClickListener(v -> {
-            Intent intent = new Intent(viewHolder.getImageButtonEdit().getContext(), TermActivity.class)
-                    .putExtra("termName", localDataSet[position].getName())
-                    .putExtra("startDate", localDataSet[position].getStartDate())
-                    .putExtra("endDate", localDataSet[position].getEndDate());
+            listener.onClick(localDataSet[position].getId(), viewHolder.getImageButtonEdit().getContext());
+            badIdTerm = localDataSet[position].getId();
+
+            Intent intent = new Intent(viewHolder.getImageButtonEdit().getContext(), TermActivity.class);
             viewHolder.getImageButtonEdit().getContext().startActivity(intent);
 
         });
 
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return localDataSet.length;
+    }
+
+    public interface OnTermItemClickListener{
+        void onClick(long termId, Context context);
     }
 }
 

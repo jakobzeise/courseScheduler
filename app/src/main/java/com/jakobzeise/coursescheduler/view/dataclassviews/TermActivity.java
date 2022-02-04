@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jakobzeise.coursescheduler.R;
 import com.jakobzeise.coursescheduler.modell.adapters.CourseListAdapter;
@@ -39,15 +40,15 @@ public class TermActivity extends AppCompatActivity {
         TextView textViewStartDateTerm = (TextView) findViewById(R.id.textViewStartDateTerm);
         TextView textViewEndDateTerm = (TextView) findViewById(R.id.textViewEndDateTerm);
         Button buttonDeleteTerm = (Button) findViewById(R.id.buttonDeleteTerm);
-        Button buttonGoHomeTerm = (Button) findViewById(R.id.buttonGoHomeTerm);
+        Button buttonGoHomeTerm = (Button) findViewById(R.id.buttonTermGoHome);
         Button addCourses = (Button) findViewById(R.id.buttonTermAddCourses);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerViewListOfCoursesInTerm);
 
-        long termId = TermListAdapter.badIdTerm - 1;
-        Term term = db.termDao().getAll().get((int) termId);
+        long termId = TermListAdapter.staticTermId;
+        Term term = db.termDao().selectById((int)termId);
 
         addCourses.setOnClickListener(v -> {
-            Course[] courses = db.courseDao().getAll().toArray(new Course[0]);
+            Course[] courses = CourseConverter.getObjectFromString(term.getCourseList()).toArray(new Course[0]);
 
             CourseListAdapter courseListAdapter = new CourseListAdapter(courses);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -56,10 +57,9 @@ public class TermActivity extends AppCompatActivity {
             recyclerView.setAdapter(courseListAdapter);
         });
 
-        if(term.getCourseList() == null){
+        if (term.getCourseList() == null) {
 
-        }
-        else {
+        } else {
             List<Course> courses = CourseConverter.getObjectFromString(term.getCourseList());
             CourseListAdapter courseListAdapter = new CourseListAdapter(courses.toArray(new Course[0]));
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -69,14 +69,20 @@ public class TermActivity extends AppCompatActivity {
         }
 
 
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM-dd-yyyy");
 
         textViewTermName.setText(term.getName());
         textViewStartDateTerm.setText("StartDate: \n" + simpleDateFormat.format(term.getStartDate()));
         textViewEndDateTerm.setText("EndDate: \n" + simpleDateFormat.format(term.getEndDate()));
-        buttonDeleteTerm.setOnClickListener(v ->
-                db.termDao().deleteById(termId)
+        buttonDeleteTerm.setOnClickListener(v -> {
+            if (term.getCourseList() != null && !term.getCourseList().isEmpty()){
+                Toast.makeText(this, "There are Courses assigned to this course", Toast.LENGTH_SHORT).show();
+            }
+                    db.termDao().delete(term);
+                    Toast.makeText(this, "Term Deleted", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, MainActivity.class));
+                }
+
         );
 
         buttonGoHomeTerm.setOnClickListener(v ->

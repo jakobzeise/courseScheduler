@@ -28,6 +28,9 @@ public interface TermDao {
     @Query("DELETE FROM term WHERE id = :id")
     void deleteById(long id);
 
+    @Query("SELECT * FROM term WHERE id = :id")
+    Term selectById(long id);
+
     @Query("UPDATE term SET courseList = :courseListString WHERE id = :id")
             void updateCourse(long id, String courseListString);
 

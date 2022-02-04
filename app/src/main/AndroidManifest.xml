@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseScheduler">
         <activity
+            android:name=".view.adds.AddAssessmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.adds.AddCourseActivity"
             android:exported="false" />
         <activity

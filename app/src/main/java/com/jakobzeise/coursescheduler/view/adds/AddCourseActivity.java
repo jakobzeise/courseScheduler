@@ -60,7 +60,19 @@ public class AddCourseActivity extends AppCompatActivity {
                     break;
                 case 2:
                     courseName = editTextTermName.getText().toString();
-                    addTermToDatabase();
+
+                    AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                            AppDatabase.class, "app_database").allowMainThreadQueries().build();
+
+                    db.courseDao().insertAll(new Course(
+                            courseName,
+                            startDate,
+                            endDate,
+                            courseStatus,
+                            null,
+                            null,
+                            0));
+
                     startActivity(new Intent(this, MainActivity.class));
             }
             counter++;
@@ -69,10 +81,5 @@ public class AddCourseActivity extends AppCompatActivity {
 
     }
 
-    public void addTermToDatabase() {
-        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "app_database").allowMainThreadQueries().build();
 
-        db.courseDao().insertAll(new Course(courseName, startDate, endDate, courseStatus, null, null, null));
-    }
 }

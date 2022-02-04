@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 
 public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.ViewHolder> {
 
+    public static long staticCourseId;
     private final Course[] localDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,8 +32,8 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
             super(view);
 
             imageButtonEditCourse = (ImageButton) view.findViewById(R.id.editCourseItem);
-            textViewCourseDate = (TextView) view.findViewById(R.id.textViewCourseDate);
-            textViewCourseName = (TextView) view.findViewById(R.id.textViewTermName);
+            textViewCourseDate = (TextView) view.findViewById(R.id.textViewCourseItemDate);
+            textViewCourseName = (TextView) view.findViewById(R.id.textViewCourseItemName);
         }
 
         public TextView getTextViewCourseName() {
@@ -75,11 +76,9 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         viewHolder.getTextViewCourseName().setText(localDataSet[position].getTitle());
 
         viewHolder.getImageButtonEditCourse().setOnClickListener(v -> {
-            Intent intent = new Intent(viewHolder.getImageButtonEditCourse().getContext(), CourseActivity.class)
-                    .putExtra("courseName", localDataSet[position].getTitle())
-                    .putExtra("startDate", localDataSet[position].getStartDate())
-                    .putExtra("endDate", localDataSet[position].getEndDate());
-            viewHolder.getImageButtonEditCourse().getContext().startActivity(intent);
+            CourseListAdapter.staticCourseId = localDataSet[position].getId();
+            viewHolder.itemView.getContext().startActivity(new Intent(viewHolder.itemView.getContext(), CourseActivity.class));
+
         });
 
     }

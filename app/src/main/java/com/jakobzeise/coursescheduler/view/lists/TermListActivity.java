@@ -21,9 +21,6 @@ import java.util.List;
 public class TermListActivity extends AppCompatActivity {
 
 
-    TermListAdapter.OnTermItemClickListener mListener = (termId, context) -> {};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +35,7 @@ public class TermListActivity extends AppCompatActivity {
 
         List<Term> terms = db.termDao().getAll();
 
-        TermListAdapter termListAdapter = new TermListAdapter(terms.toArray(new Term[0]), mListener, this);
+        TermListAdapter termListAdapter = new TermListAdapter(terms.toArray(new Term[0]));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

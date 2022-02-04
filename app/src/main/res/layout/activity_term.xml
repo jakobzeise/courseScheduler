@@ -18,25 +18,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonGoHomeTerm"
+        android:id="@+id/buttonTermGoHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:text="Home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonTermAddCourses"
-        app:layout_constraintStart_toEndOf="@+id/buttonDeleteTerm" />
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDeleteTerm"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteTerm"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonDeleteTerm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:backgroundTint="#FF0000"
         android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonGoHomeTerm"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonGoHomeTerm" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonTermAddCourses"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonTermGoHome" />
 
     <TextView
         android:id="@+id/textViewStartDateTerm"
@@ -46,7 +46,6 @@
         android:layout_marginTop="20dp"
         android:text="StartDate"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/textViewTermName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTermName" />
 
@@ -59,7 +58,6 @@
         android:text="EndDate"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewTermName"
         app:layout_constraintTop_toBottomOf="@+id/textViewTermName" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -68,7 +66,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGoHomeTerm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStartDateTerm" />
 
@@ -76,9 +73,9 @@
         android:id="@+id/buttonTermAddCourses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
         android:text="Add Courses"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonGoHomeTerm"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDeleteTerm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonGoHomeTerm" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonDeleteTerm" />
 </androidx.constraintlayout.widget.ConstraintLayout>

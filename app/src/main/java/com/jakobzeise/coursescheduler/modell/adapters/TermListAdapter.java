@@ -22,9 +22,8 @@ import java.text.SimpleDateFormat;
 
 public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHolder> {
 
-    public static long badIdTerm;
+    public static long staticTermId;
     private final Term[] localDataSet;
-    OnTermItemClickListener listener;
     Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,10 +54,8 @@ public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHo
 
     }
 
-    public TermListAdapter(Term[] dataSet, OnTermItemClickListener listener, Context context) {
+    public TermListAdapter(Term[] dataSet) {
         localDataSet = dataSet;
-        this.listener = listener;
-        this.context = context;
     }
 
     @NonNull
@@ -79,8 +76,11 @@ public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHo
         viewHolder.getTextViewTermDate().setText(termDate);
         viewHolder.getTextViewTermName().setText(localDataSet[position].getName());
         viewHolder.getImageButtonEdit().setOnClickListener(v -> {
-            listener.onClick(localDataSet[position].getId(), viewHolder.getImageButtonEdit().getContext());
-            badIdTerm = localDataSet[position].getId();
+            staticTermId = localDataSet[position].getId();
+
+            viewHolder.itemView.getContext().startActivity(
+                    new Intent(viewHolder.itemView.getContext(), TermActivity.class)
+            );
 
             Intent intent = new Intent(viewHolder.getImageButtonEdit().getContext(), TermActivity.class);
             viewHolder.getImageButtonEdit().getContext().startActivity(intent);
@@ -94,8 +94,6 @@ public class TermListAdapter extends RecyclerView.Adapter<TermListAdapter.ViewHo
         return localDataSet.length;
     }
 
-    public interface OnTermItemClickListener{
-        void onClick(long termId, Context context);
-    }
+
 }
 

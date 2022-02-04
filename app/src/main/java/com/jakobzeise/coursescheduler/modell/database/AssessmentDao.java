@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.jakobzeise.coursescheduler.modell.dataclasses.Assessment;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Term;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface AssessmentDao {
     @Update
     void update(Assessment assessment);
 
+    @Query("SELECT * FROM assessment WHERE id = :id")
+    Assessment selectById(long id);
 }

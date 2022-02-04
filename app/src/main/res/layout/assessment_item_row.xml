@@ -7,7 +7,7 @@
     android:padding="10dp">
 
     <ImageButton
-        android:id="@+id/editCourseItem"
+        android:id="@+id/editAssessmentItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#FF03DAC5"
@@ -17,25 +17,25 @@
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <TextView
-        android:id="@+id/textViewCourseItemName"
+        android:id="@+id/textViewAssessmentItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sample Course"
+        android:text="Assessment Course"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/editCourseItem"
+        app:layout_constraintStart_toEndOf="@+id/editAssessmentItem"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewCourseItemDate"
+        android:id="@+id/textViewAssessmentItemDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jan 11 to Jan 12 2022"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/editCourseItem"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCourseItemName" />
+        app:layout_constraintStart_toEndOf="@+id/editAssessmentItem"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAssessmentItemName" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -44,5 +44,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/course" />
+        app:srcCompat="@drawable/assessment" />
 </androidx.constraintlayout.widget.ConstraintLayout>

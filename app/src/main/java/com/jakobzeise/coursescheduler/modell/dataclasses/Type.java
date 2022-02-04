@@ -8,10 +8,9 @@ public class Type {
     String name;
     int numberOfItems;
 
-    public Type(int icon, String name, int numberOfItems) {
+    public Type(int icon, String name) {
         this.icon = icon;
         this.name = name;
-        this.numberOfItems = numberOfItems;
     }
 
     @NonNull
@@ -40,11 +39,4 @@ public class Type {
         this.name = name;
     }
 
-    public int getNumberOfItems() {
-        return numberOfItems;
-    }
-
-    public void setNumberOfItems(int numberOfItems) {
-        this.numberOfItems = numberOfItems;
-    }
 }

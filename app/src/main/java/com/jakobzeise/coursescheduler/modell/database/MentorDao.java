@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.jakobzeise.coursescheduler.modell.dataclasses.Mentor;
+import com.jakobzeise.coursescheduler.modell.dataclasses.Term;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface MentorDao {
     @Update
     void update(Mentor mentor);
 
+    @Query("SELECT * FROM mentor WHERE id = :id")
+    Mentor selectById(long id);
 }

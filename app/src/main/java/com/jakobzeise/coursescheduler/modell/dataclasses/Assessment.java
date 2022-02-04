@@ -10,51 +10,17 @@ public class Assessment {
     @PrimaryKey(autoGenerate = true)
     long id;
 
-    String assessmentGrade;
-    String performanceAssessment;
-    String objectiveAssessment;
-    String assessmentTitle;
-    long assessmentEndDate;
+    String performance;
+    String objective;
+    String title;
+    long endDate;
 
-
-    public String getAssessmentGrade() {
-        return assessmentGrade;
-    }
-
-    public void setAssessmentGrade(String assessmentGrade) {
-        this.assessmentGrade = assessmentGrade;
-    }
-
-    public String getPerformanceAssessment() {
-        return performanceAssessment;
-    }
-
-    public void setPerformanceAssessment(String performanceAssessment) {
-        this.performanceAssessment = performanceAssessment;
-    }
-
-    public String getObjectiveAssessment() {
-        return objectiveAssessment;
-    }
-
-    public void setObjectiveAssessment(String objectiveAssessment) {
-        this.objectiveAssessment = objectiveAssessment;
-    }
-
-    public String getAssessmentTitle() {
-        return assessmentTitle;
-    }
-
-    public void setAssessmentTitle(String assessmentTitle) {
-        this.assessmentTitle = assessmentTitle;
-    }
-
-    public long getAssessmentEndDate() {
-        return assessmentEndDate;
-    }
-
-    public void setAssessmentEndDate(long assessmentEndDate) {
-        this.assessmentEndDate = assessmentEndDate;
+    public Assessment(long id, String performance, String objective, String title, long endDate) {
+        this.id = id;
+        this.performance = performance;
+        this.objective = objective;
+        this.title = title;
+        this.endDate = endDate;
     }
 
     public long getId() {
@@ -65,17 +31,35 @@ public class Assessment {
         this.id = id;
     }
 
-    public Assessment(
-            String assessmentGrade,
-            String performanceAssessment,
-            String objectiveAssessment,
-            String assessmentTitle,
-            long assessmentEndDate
-    ) {
-        this.assessmentGrade = assessmentGrade;
-        this.performanceAssessment = performanceAssessment;
-        this.objectiveAssessment = objectiveAssessment;
-        this.assessmentTitle = assessmentTitle;
-        this.assessmentEndDate = assessmentEndDate;
+    public String getPerformance() {
+        return performance;
+    }
+
+    public void setPerformance(String performance) {
+        this.performance = performance;
+    }
+
+    public String getObjective() {
+        return objective;
+    }
+
+    public void setObjective(String objective) {
+        this.objective = objective;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public long getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(long endDate) {
+        this.endDate = endDate;
     }
 }

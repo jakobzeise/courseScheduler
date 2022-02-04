@@ -23,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.mainRecycler);
 
         Type[] types = new Type[]{
-                new Type(R.drawable.terms, "Terms", 0),
-                new Type(R.drawable.course, "Course", 0),
-                new Type(R.drawable.assessment, "Assessment", 0),
-                new Type(R.drawable.mentor, "Mentor", 0)
+                new Type(R.drawable.terms, "Terms"),
+                new Type(R.drawable.course, "Course"),
+                new Type(R.drawable.assessment, "Assessment"),
+                new Type(R.drawable.mentor, "Mentor")
         };
 
 

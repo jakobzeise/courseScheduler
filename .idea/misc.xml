@@ -9,17 +9,20 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.1" />
         <entry key="app/src/main/res/layout/Mentor_item_row.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_add_assessment.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_add_course.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_add_mentor.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_add_term.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_assessment.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_assessment_list.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_course.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_course_list.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_mentor.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_term.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_term_list.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_term_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_terms.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/assessment_item_row.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/border.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/course_item_row.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/main_row_item.xml" value="0.35572916666666665" />

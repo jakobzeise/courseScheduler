@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Course {
 
+    public long mentorId;
     @PrimaryKey(autoGenerate = true)
     long id;
 
@@ -13,7 +14,6 @@ public class Course {
     long startDate;
     long endDate;
     String status;
-    String mentorList;
     String assessmentList;
     String notesList;
 
@@ -73,15 +73,15 @@ public class Course {
         this.notesList = notesList;
     }
 
-    public String getMentorList() {
-        return mentorList;
+    public long getMentorId() {
+        return mentorId;
     }
 
-    public void setMentorList(String mentorList) {
-        this.mentorList = mentorList;
+    public void setMentorId(long mentorId) {
+        this.mentorId = mentorId;
     }
 
-    public Course(String title, long startDate, long endDate, String status, String assessmentList, String notesList, String mentorList) {
+    public Course(String title, long startDate, long endDate, String status, String assessmentList, String notesList, long mentorId) {
 
         this.title = title;
         this.startDate = startDate;
@@ -89,6 +89,6 @@ public class Course {
         this.status = status;
         this.assessmentList = assessmentList;
         this.notesList = notesList;
-        this.mentorList = mentorList;
+        this.mentorId = mentorId;
     }
 }

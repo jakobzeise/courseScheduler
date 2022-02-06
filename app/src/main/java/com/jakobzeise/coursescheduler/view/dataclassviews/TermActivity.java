@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.jakobzeise.coursescheduler.R;
 import com.jakobzeise.coursescheduler.modell.adapters.CourseListAdapter;
+import com.jakobzeise.coursescheduler.modell.adapters.CoursesInTermActivityAdapter;
 import com.jakobzeise.coursescheduler.modell.adapters.TermListAdapter;
 import com.jakobzeise.coursescheduler.modell.converters.CourseConverter;
 import com.jakobzeise.coursescheduler.modell.database.AppDatabase;
@@ -48,13 +49,13 @@ public class TermActivity extends AppCompatActivity {
         Term term = db.termDao().selectById((int)termId);
 
         addCourses.setOnClickListener(v -> {
-            Course[] courses = CourseConverter.getObjectFromString(term.getCourseList()).toArray(new Course[0]);
+            Course[] courses = db.courseDao().getAll().toArray(new Course[0]);
 
-            CourseListAdapter courseListAdapter = new CourseListAdapter(courses);
+            CoursesInTermActivityAdapter coursesInTermActivityAdapter = new CoursesInTermActivityAdapter(courses);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(courseListAdapter);
+            recyclerView.setAdapter(coursesInTermActivityAdapter);
         });
 
         if (term.getCourseList() == null) {
